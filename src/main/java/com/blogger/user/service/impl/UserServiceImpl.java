@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
             UserLogInLog userLogInLog = new UserLogInLog();
 
             // 登录主键
-            userLogInLog.setLoginId(3);
+            userLogInLog.setLoginId(5);
             // 登录时间
             userLogInLog.setLoginTime(Myutils.LocalDateTimeToUdate());
             // 登录ip
