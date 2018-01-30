@@ -1,5 +1,8 @@
 package com.test;
 
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.Bean;
+
 import java.util.Date;
 
 /**
@@ -11,6 +14,7 @@ import java.util.Date;
  * @desc
  * @since 1.8
  */
+@Configurable
 public class Car {
 
     private Integer id;

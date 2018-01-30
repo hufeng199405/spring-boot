@@ -1,6 +1,8 @@
 package com.test;
 
+import com.blogger.user.domain.User;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -25,8 +27,21 @@ public class DefaultListFactoryBeanTest {
         // 读取xml文件资源
         ResourcePatternResolver loader = new PathMatchingResourcePatternResolver();
 
-        Resource[] resources = loader.getResources("classpath*:**/*.xml");
+        Resource[] resources = loader.getResources("classpath*:*.xml");
 
         DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+
+        // 创建一个bean reader
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+
+        // 使用reader读取resource资源
+        for (Resource resource : resources) {
+
+            reader.loadBeanDefinitions(resources);
+        }
+
+        User user = factory.getBean("user", User.class);
+
+        System.out.println(user.getUserName());
     }
 }
